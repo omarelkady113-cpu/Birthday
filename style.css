@@ -1,0 +1,133 @@
+/* استدعاء خط "كايرو" العربي من جوجل ليكون شكل الكلام احترافي */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+/* التنسيق الأساسي للصفحة كلها */
+body {
+    font-family: 'Cairo', sans-serif; /* تطبيق الخط */
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); /* لون خلفية متدرج بمبي */
+    margin: 0;
+    padding: 20px 0;
+    min-height: 100vh; /* يخلي الصفحة تاخد طول الشاشة بالكامل */
+    display: flex; /* لتوسيط العناصر */
+    align-items: center; /* توسيط عمودي */
+    justify-content: center; /* توسيط أفقي */
+    overflow-x: hidden; /* يمنع ظهور شريط التمرير الأفقي المزعج */
+}
+
+/* حاوية القلوب المتحركة (تغطي الشاشة كلها وتكون في الخلفية) */
+#hearts-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+/* تصميم القلب الواحد وحركته للصعود لأعلى */
+.heart { position: absolute; bottom: -10vh; animation: floatUp linear infinite; opacity: 0.7; }
+@keyframes floatUp { to { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
+
+/* الصندوق الأبيض الرئيسي اللي جواه المحتوى */
+.container {
+    background: rgba(255, 255, 255, 0.95); /* لون أبيض شفاف شوية */
+    padding: 40px 30px; /* مسافات داخلية لراحة العين */
+    border-radius: 25px; /* تدوير حواف الصندوق */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15); /* ظل للصندوق ليعطيه شكل 3D */
+    width: 90%;
+    text-align: center;
+    transition: all 0.5s ease-in-out; /* نعومة في الحركة عند تغيير حجم الصندوق */
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* الكلاسات السحرية بتاعتك اللي بتتحكم في عرض الشاشة بناءً على المحتوى */
+.size-small { max-width: 550px; }  /* مناسبة لشاشة الدخول (ضيقة) */
+.size-medium { max-width: 800px; } /* مناسبة للرسائل والتورتة (متوسطة) */
+.size-large { max-width: 1150px; } /* مناسبة لمعرض الصور (عريضة جداً) */
+
+/* إخفاء كل الشاشات بشكل افتراضي، وعمل تأثير ظهور تدريجي */
+.step-section { display: none; width: 100%; animation: fadeIn 0.8s ease; }
+/* إظهار الشاشة اللي بتاخد كلاس active فقط */
+.step-section.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+/* تنسيق العناوين والنصوص */
+h1 { font-size: 2.3rem; color: #d81b60; margin-bottom: 20px; font-weight: 700; }
+h2 { font-size: 1.9rem; color: #ad1457; margin-bottom: 15px; }
+p.love-message { font-size: 1.4rem; line-height: 1.8; color: #444; text-align: justify; padding: 0 10px; }
+
+/* تنسيق مربع الباسورد */
+.input-group input {
+    width: 85%;
+    padding: 15px;
+    font-size: 1.3rem;
+    border: 2px solid #f8bbd0;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 20px;
+    outline: none;
+    transition: 0.3s;
+}
+.input-group input:focus { border-color: #d81b60; box-shadow: 0 0 10px rgba(216, 27, 96, 0.2); }
+
+/* تنسيق جميع الأزرار في الموقع */
+button {
+    background: #d81b60;
+    color: #fff;
+    border: none;
+    padding: 15px 50px;
+    border-radius: 12px;
+    cursor: pointer; /* تغيير الماوس لشكل إيد عند الوقوف عليه */
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 30px;
+    transition: 0.3s;
+}
+button:hover { background: #ad1457; transform: translateY(-3px); } /* تأثير عند وقوف الماوس على الزرار */
+
+/* تنسيق زرار صراحة الجديد (عشان يبقى شكله مختلف ومميز) */
+.sarahah-btn {
+    display: inline-block;
+    background: #00bcd4; /* لون لبني */
+    color: #fff;
+    padding: 15px 35px;
+    border-radius: 50px;
+    text-decoration: none; /* إلغاء الخط اللي تحت اللينك */
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,188,212,0.3);
+}
+.sarahah-btn:hover { background: #0097a7; transform: translateY(-3px); }
+
+/* تنسيق معرض الصور (شبكة من عمودين) */
+.photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-top: 30px; width: 100%; }
+/* كارت الصورة الواحد */
+.photo-card { position: relative; cursor: pointer; border-radius: 18px; overflow: hidden; background: #fff; padding: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+/* الصورة نفسها (مغيمة في البداية) */
+.photo-card img { width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px; filter: blur(20px); transition: 0.6s; }
+/* الغلاف اللي بيخفي الصورة */
+.photo-cover { position: absolute; inset: 12px; background: linear-gradient(135deg, #f8bbd0, #f48fb1); display: flex; align-items: center; justify-content: center; z-index: 2; border-radius: 12px; transition: 0.6s; color: white; font-weight: bold; font-size: 1.2rem; }
+/* لما الكارت ياخد كلاس revealed (يعني انضغط عليه)، الغلاف يختفي لفوق والصورة توضح */
+.photo-card.revealed .photo-cover { transform: translateY(-115%); opacity: 0; }
+.photo-card.revealed img { filter: blur(0); }
+
+/* رسم التورتة اليدوية باستخدام الأشكال والألوان */
+.cake-display { position: relative; height: 180px; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; margin: 30px 0; }
+.cake-layer-bottom { width: 160px; height: 55px; background: #f48fb1; border-radius: 10px 10px 4px 4px; z-index: 1; }
+.cake-layer-top { width: 120px; height: 45px; background: #f8bbd0; margin-bottom: -5px; z-index: 2; border-radius: 10px; }
+.cake-plate-base { width: 200px; height: 10px; background: #eee; border-radius: 20px; }
+.candle-body-custom { width: 10px; height: 30px; background: repeating-linear-gradient(0deg, #fff, #fff 5px, #e91e63 5px, #e91e63 10px); border-radius: 3px; z-index: 3; }
+.candle-flame { width: 15px; height: 22px; background: #ff9800; border-radius: 50%/60% 60% 40% 40%; animation: flicker 0.6s infinite alternate; box-shadow: 0 0 15px #ffeb3b; margin-bottom: 3px; }
+
+/* حركة لهب الشمعة */
+@keyframes flicker { from { transform: scale(1); opacity: 0.8; } to { transform: scale(1.2); opacity: 1; } }
+
+/* صندوق التواريخ */
+.dates-box { background: #fff5f8; padding: 30px; border-radius: 20px; border: 2px dashed #d81b60; margin: 20px 0; }
+.dates-box p { font-size: 1.4rem; margin: 10px 0; }
+.dates-box span { font-size: 1.8rem; font-weight: bold; color: #d81b60; }
+
+/* للموبايلات والشاشات الصغيرة: خلي الصور تحت بعض (عمود واحد) وصغر الخطوط شوية */
+@media (max-width: 600px) {
+    .photo-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 1.8rem; }
+    p.love-message { font-size: 1.1rem; }
+}

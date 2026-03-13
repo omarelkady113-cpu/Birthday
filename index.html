@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>عيد ميلاد سعيد يا حبيبتي</title> 
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <div id="hearts-container"></div>
+
+    <div class="container size-small" id="main-container">
+        
+        <div id="login-section" class="step-section active"> <h2>نورتي يا كوتي ❤️</h2>
+            <p>أكتبي كلمة السر يا روحي</p>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="أخلصي مفيش وقت"> 
+            </div>
+            <button onclick="checkLogin()">دخول</button> 
+            <p class="error-msg" id="error-msg" style="display:none; color:red; margin-top:10px;">كلمة المرور غير صحيحة، حاولي مرة أخرى!</p>
+        </div>
+
+        <div id="step1-message" class="step-section">
+            <h1> إلي نبضي❤️</h1>
+            <p class="love-message">
+                عَيْناك بَحْر تَاهَت بِه سُفُني وتزعْزعتْ بِه نَبَضات قَلبِي أنَا اَلذِي لََا يَهزنِي برق ولَا رَعْد عَينِي متلَّالاة تَهزِم ثَباتِي ف أَنْتي يَا حبيبَتي ك اَلدَّم فِي وَريدِي كُلمَا اِشْتقْتُ إِلَيك جَرحَت نَفسِي لِكيْ القاقي فيَا لَيْتنَا نسير ف المدينة لَيْلا فَيصبِح الهلَال فَوقِي والْبَدْر بِجانِبيْ
+            </p>
+            <button onclick="nextStep('step1-message', 'step2-video')">اللي بعده ❤️</button>
+        </div>
+
+        <div id="step2-video" class="step-section">
+            <h2>الفيديو ده بيوصفني🎬</h2>
+            <div class="video-container">
+                <video controls width="100%">
+                    <source src="videos/maaki.mp4" type="video/mp4"> متصفحك لا يدعم تشغيل الفيديو. 
+                </video>
+            </div>
+            <button onclick="nextStep('step2-video', 'step3-gallery')">شوفي المفاجأة اللي بعدها ✨</button>
+        </div>
+
+        <div id="step3-gallery" class="step-section">
+            <h2>أغنيتنا المفضلة وأجمل لحظاتنا 📸</h2>
+            <div class="music-player">
+                <audio controls id="birthday-song">
+                    <source src="Music/Tamer_Ashour.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+            
+            <div class="photo-grid">
+                <div class="photo-card" onclick="revealImage(this)"> <div class="photo-cover"><span>دوسي يا كوتي 🎁</span></div> <img src="pictures/soul.jpeg" alt="صورة 1">
+                    <p>أول صورة لينا مع بعض✨</p>
+                </div>
+                <div class="photo-card" onclick="revealImage(this)">
+                    <div class="photo-cover"><span> افتحي دي كمان🎁</span></div>
+                    <img src="pictures/smile.jpg" alt="صورة 2">
+                    <p>ضحكتك اللي بتخطف قلبي ❤️</p>
+                </div>
+                <div class="photo-card" onclick="revealImage(this)">
+                    <div class="photo-cover"><span> مفاجأة!🎁</span></div>
+                    <img src="pictures/hands.jpg" alt="صورة 3">
+                    <p>وكأنني أملك الدُنيا حين أمسِك يدك❤️❤️</p>
+                </div>
+                <div class="photo-card" onclick="revealImage(this)">
+                    <div class="photo-cover"><span> اضغطي هنا🎁</span></div>
+                    <img src="pictures/funny.jpg" alt="صورة 4">
+                    <p>مجنونة بس بحبك 😂</p>
+                </div>
+                <div class="photo-card" onclick="revealImage(this)">
+                    <div class="photo-cover"><span> يا روحي 🎁</span></div>
+                    <img src="pictures/my love.jpg" alt="صورة 5">
+                    <p>دُمت لي سنداً وحبيباً وشريكاً حتى نشيب سوياً♥️</p>
+                </div>
+                <div class="photo-card" onclick="revealImage(this)">
+                    <div class="photo-cover"><span> نور عيني 🎁</span></div>
+                    <img src="pictures/love.jpg" alt="صورة 6">
+                    <p>أحلى صدفة في حياتي ❤️</p>
+                </div>
+            </div>
+            <button onclick="nextStep('step3-gallery', 'step4-dates')">دوسي هنا يا كوتي</button>
+        </div>
+
+        <div id="step4-dates" class="step-section">
+            <h2>أهم تاريخ في حياتي</h2>
+            <div class="dates-box">
+                <p>تاريخ ميلاد أغلى إنسانة</p>
+                <span>(19 - 4 - 2005)</span>
+                <br>
+                <p>تاريخ اول يوم دخلتي قلبي فيه</p>
+                <span>(19 - 2 - 2026)</span>
+            </div>
+            <button onclick="nextStep('step4-dates', 'step5-final')">الرسالة الأخيرة 💌</button>
+        </div>
+
+        <div id="step5-final" class="step-section">
+            <div class="cake-display">
+                <div class="candle-flame"></div> <div class="candle-body-custom"></div> <div class="cake-layer-top"></div> <div class="cake-layer-bottom"></div> <div class="cake-plate-base"></div> 
+            </div>
+
+            <h1>عيد ميلاد سعيد يا نبض قلبي 🎂🥳</h1>
+            <p class="love-message">
+                2026-4-19 اول عيد ميلاد واحنا سوا<br>
+                حبيت أعملك حاجة مختلفة السنة دي تفضل ذكرى بينا. انتي أجمل حاجة حصلتلي، وبتمنى من ربنا إن كل سنينك الجاية تكون سعادة وفرح وأنا دايماً في ضهرك ومعاكي. بحبك يا نور عيني ! ❤️
+            </p>
+            
+            <audio controls id="final-audio">
+                <source src="Music/Albumaty.Com.mp3" type="audio/mp3">
+            </audio>
+            <br>
+            <button onclick="nextStep('step5-final', 'step6-sarahah')" style="margin-top: 20px;">آخر حاجة خالص 💌</button>
+        </div>
+
+        <div id="step6-sarahah" class="step-section">
+            <h1>كلمة من القلب 💌</h1>
+            <p class="love-message">
+                لو حابة تقوليلي أي حاجة، أو تقولي رأيك في المفاجأة دي، سيبيلي رسالة هنا من غير ما أعرف:
+            </p>
+            <a href="https://omaraelkady.sarhne.com" target="_blank" class="sarahah-btn">ارمي كلمة في صراحة ❤️</a>
+            <br>
+            <button onclick="nextStep('step6-sarahah', 'step1-message')" style="margin-top: 30px; background-color: #ff9a9e;">اقرأي الرسالة من الأول</button>
+        </div>
+
+    </div>
+    <script src="script.js"></script> 
+</body>
+</html>
