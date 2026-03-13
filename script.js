@@ -1,6 +1,6 @@
 // دالة التحقق من الدخول (الباسورد)
 function checkLogin() {
-    const validPass = "1234"; // كلمة المرور الصحيحة
+    const validPass = "2752003"; // كلمة المرور الصحيحة
     const passVal = document.getElementById("password").value; // القيمة اللي المستخدم كتبها
     const errorMsg = document.getElementById("error-msg"); // رسالة الخطأ
 
