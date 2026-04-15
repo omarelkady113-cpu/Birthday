@@ -7,11 +7,16 @@
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-    <div id="hearts-container"></div>
+    <!-- شاشة الترحيب اللي بتظهر بعد تسجيل الدخول وتختفي لوحدها -->
+    <div id="welcome-overlay" class="welcome-overlay">
+        <h2>أهلاً بيكي يا نور عيني ❤️</h2>
+    </div>
 
+    <div id="hearts-container"></div>
     <div class="container size-small" id="main-container">
         
-        <div id="login-section" class="step-section active"> <h2>نورتي يا كوتي ❤️</h2>
+        <div id="login-section" class="step-section active"> 
+            <h2>نورتي يا كوتي ❤️</h2>
             <p>أكتبي كلمة السر يا روحي</p>
             <div class="input-group">
                 <input type="password" id="password" placeholder="أخلصي مفيش وقت"> 
@@ -21,7 +26,7 @@
         </div>
 
         <div id="step1-message" class="step-section">
-            <h1> إلي نبضي❤️</h1>
+            <h1>إلي نبضي❤️</h1>
             <p class="love-message">
                 عَيْناك بَحْر تَاهَت بِه سُفُني وتزعْزعتْ بِه نَبَضات قَلبِي أنَا اَلذِي لََا يَهزنِي برق ولَا رَعْد عَينِي متلَّالاة تَهزِم ثَباتِي ف أَنْتي يَا حبيبَتي ك اَلدَّم فِي وَريدِي كُلمَا اِشْتقْتُ إِلَيك جَرحَت نَفسِي لِكيْ القاقي فيَا لَيْتنَا نسير ف المدينة لَيْلا فَيصبِح الهلَال فَوقِي والْبَدْر بِجانِبيْ
             </p>
@@ -30,12 +35,15 @@
 
         <div id="step2-video" class="step-section">
             <h2>الفيديو ده بيوصفني🎬</h2>
-            <div class="video-container">
-                <video controls width="100%">
+            
+            <!-- إطار الفيديو اللي بيلف -->
+            <div class="video-box-wrapper">
+                <video controls>
                     <source src="videos/maaki.mp4" type="video/mp4"> متصفحك لا يدعم تشغيل الفيديو. 
                 </video>
             </div>
-            <button onclick="nextStep('step2-video', 'step3-gallery')">شوفي المفاجأة اللي بعدها ✨</button>
+
+            <button onclick="nextStep('step2-video', 'step3-gallery')" style="margin-top: 40px;">شوفي المفاجأة اللي بعدها ✨</button>
         </div>
 
         <div id="step3-gallery" class="step-section">
@@ -48,7 +56,9 @@
             </div>
             
             <div class="photo-grid">
-                <div class="photo-card" onclick="revealImage(this)"> <div class="photo-cover"><span>دوسي يا كوتي 🎁</span></div> <img src="pictures/soul.jpeg" alt="صورة 1">
+                <div class="photo-card" onclick="revealImage(this)"> 
+                    <div class="photo-cover"><span>دوسي يا كوتي 🎁</span></div> 
+                    <img src="pictures/soul.jpeg" alt="صورة 1">
                     <p>أول صورة لينا مع بعض✨</p>
                 </div>
                 <div class="photo-card" onclick="revealImage(this)">
@@ -57,25 +67,36 @@
                     <p>ضحكتك اللي بتخطف قلبي ❤️</p>
                 </div>
                 <div class="photo-card" onclick="revealImage(this)">
-                    <div class="photo-cover"><span> مفاجأة!🎁</span></div>
+                    <div class="photo-cover"><span> ودي🎁</span></div>
                     <img src="pictures/hands.jpg" alt="صورة 3">
                     <p>وكأنني أملك الدُنيا حين أمسِك يدك❤️❤️</p>
                 </div>
                 <div class="photo-card" onclick="revealImage(this)">
-                    <div class="photo-cover"><span> اضغطي هنا🎁</span></div>
+                    <div class="photo-cover"><span>معلش دي كمان🎁</span></div>
                     <img src="pictures/funny.jpg" alt="صورة 4">
                     <p>مجنونة بس بحبك 😂</p>
                 </div>
                 <div class="photo-card" onclick="revealImage(this)">
-                    <div class="photo-cover"><span> يا روحي 🎁</span></div>
+                    <div class="photo-cover"><span>  ودي يا بسبوسه 🎁</span></div>
                     <img src="pictures/my love.jpg" alt="صورة 5">
                     <p>دُمتي لي سنداً وحبيباً وشريكاً حتى نشيب سوياً♥️</p>
                 </div>
                 <div class="photo-card" onclick="revealImage(this)">
-                    <div class="photo-cover"><span> نور عيني 🎁</span></div>
+                    <div class="photo-cover"><span> دي كمان ي عمري  🎁</span></div>
                     <img src="pictures/love.jpg" alt="صورة 6">
                     <p>أحلى صدفة في حياتي ❤️</p>
                 </div>
+                <div class="photo-card" onclick="revealImage(this)">
+                    <div class="photo-cover"><span>  دي كمان ي حبي 🎁</span></div>
+                    <img src="pictures/relai.jpeg" alt="صورة 7">
+                    <p> بجاااااد  😂</p>
+                </div>
+                <div class="photo-card" onclick="revealImage(this)">
+                    <div class="photo-cover"><span>خلاص اخر حاجه 🎁</span></div>
+                    <img src="pictures/my mon.jpeg" alt="صورة 8">
+                    <p> بحبك يا بنوتي❤️ </p>
+                </div>
+
             </div>
             <button onclick="nextStep('step3-gallery', 'step4-dates')">دوسي هنا يا كوتي</button>
         </div>
@@ -84,19 +105,24 @@
             <h2>أهم تاريخ في حياتي</h2>
             <div class="dates-box">
                 <p>تاريخ ميلاد أغلى إنسانة</p>
-                <span>(19 - 4 - 2005)</span>
-                <br>
+                <!-- حلقة بتلف حوالين التاريخ -->
+                <div class="animated-ring"><span>(19 - 4 - 2005)</span></div>
+                <br><br>
                 <p>تاريخ اول يوم دخلتي قلبي فيه</p>
-                <span>(19 - 2 - 2026)</span>
+                <!-- حلقة بتلف حوالين التاريخ -->
+                <div class="animated-ring"><span>(19 - 2 - 2026)</span></div>
             </div>
             <button onclick="nextStep('step4-dates', 'step5-final')">رسالة اخيرة 💌</button>
         </div>
 
         <div id="step5-final" class="step-section">
             <div class="cake-display">
-                <div class="candle-flame"></div> <div class="candle-body-custom"></div> <div class="cake-layer-top"></div> <div class="cake-layer-bottom"></div> <div class="cake-plate-base"></div> 
+                <div class="candle-flame"></div> 
+                <div class="candle-body-custom"></div> 
+                <div class="cake-layer-top"></div> 
+                <div class="cake-layer-bottom"></div> 
+                <div class="cake-plate-base"></div> 
             </div>
-
             <h1>عيد ميلاد سعيد يا نبض قلبي 🎂🥳</h1>
             <p class="love-message">
                 2026-4-19 اول عيد ميلاد واحنا سوا<br>
@@ -112,8 +138,17 @@
 
         <div id="step6-sarahah" class="step-section">
             <h1>كلمة من القلب 💌</h1>
+            
+            <!-- نقلت الأغنية هنا زي ما طلبت -->
+            <div class="music-player" style="margin-bottom: 25px;">
+                <h3 style="color: #ad1457; margin-bottom: 10px;">شغلي الأغنية دي وأنتي بتكتبي 🎶</h3>
+                <audio controls id="video-song">
+                    <source src="Music/bhaa_sltan_maaya.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+
             <p class="love-message">
-                لو حابة تقوليلي أي حاجة، أو تقولي رأيك في المفاجأة دي، سيبيلي رسالة هنا من غير ما أعرف:
+                لو حابة تقوليلي أي حاجة، أو تقولي رأيك في المفاجأة دي، سيبيلي رسالة هنا 
             </p>
             <a href="https://omaraelkady.sarhne.com" target="_blank" class="sarahah-btn">قولي اللي في قلبك ❤️</a>
             <br>
